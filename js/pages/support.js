@@ -74,7 +74,9 @@ const SupportPage = {
               <span style="font-size: 1.5rem;">🌐</span>
               <div>
                 <strong>الموقع</strong>
-                <p style="color: var(--accent-cyan); font-size: var(--fs-sm);">www.neo-wahha.edu</p>
+                <p style="color: var(--accent-cyan); font-size: var(--fs-sm); direction: ltr; text-align: right;">
+                  <a href="https://neo-wah-ha.vercel.app/" target="_blank" style="color: inherit; text-decoration: none; transition: 0.3s; cursor: pointer;">https://neo-wah-ha.vercel.app/</a>
+                </p>
               </div>
             </div>
           </div>
