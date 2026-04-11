@@ -64,7 +64,7 @@
 .login-error {
   background: rgba(255, 51, 102, 0.15);
   border: 2px solid rgba(255, 51, 102, 0.5);
-  color: #fff;
+  color: var(--text-primary);
   text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
   padding: var(--space-4);
   border-radius: var(--radius-md);
@@ -637,7 +637,7 @@
 .quiz-question h3 {
   font-size: var(--fs-2xl);
   margin-bottom: var(--space-6);
-  color: #fff;
+  color: var(--text-primary);
   text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
 
 }
@@ -716,7 +716,7 @@
   font-size: var(--fs-6xl);
   font-weight: 900;
   text-shadow: var(--text-shadow-3d);
-  color: #fff;
+  color: var(--text-primary);
   display: block;
   margin-bottom: var(--space-2);
 }

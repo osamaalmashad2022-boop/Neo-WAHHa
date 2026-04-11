@@ -17,13 +17,15 @@ const SupportPage = {
         <div class="grid-2" style="max-width: 600px; margin: 0 auto var(--space-8);">
           <div class="team-card" style="border-color: var(--accent-orange);">
             <div class="team-avatar" style="background: var(--gradient-sunset);">👨‍🏫</div>
-            <h3>د/ رامي رشاد</h3>
-            <p class="role">مشرف أكاديمي</p>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">د. رامي رشاد الطحان</h3>
+            <p class="role" style="margin-bottom: 0.25rem;">مدرس تكنولوجيا التعليم</p>
+            <p class="role" style="font-size: 0.85rem; opacity: 0.8;">كلية التربية جامعة دمياط</p>
           </div>
           <div class="team-card" style="border-color: var(--accent-blue);">
             <div class="team-avatar" style="background: var(--gradient-blue);">👨‍💻</div>
-            <h3>م/ عمار عماد</h3>
-            <p class="role">مشرف تقني</p>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">م. عمار عماد جمل</h3>
+            <p class="role" style="margin-bottom: 0.25rem;">معيد بقسم تكنولوجيا التعليم</p>
+            <p class="role" style="font-size: 0.85rem; opacity: 0.8;">كلية التربية جامعة دمياط</p>
           </div>
         </div>
 

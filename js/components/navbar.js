@@ -7,6 +7,28 @@ const Navbar = {
     const logoutBtn = Utils.$('logout-btn');
     const usernameEl = Utils.$('navbar-username');
     const brandHome = Utils.$('navbar-brand-home');
+    const themeToggleBtn = Utils.$('theme-toggle-btn');
+
+    if (themeToggleBtn) {
+      // Initialize icon based on current theme
+      const savedTheme = localStorage.getItem('neo_wahha_theme');
+      if (savedTheme === 'light') {
+        themeToggleBtn.textContent = '🌙';
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('neo_wahha_theme', 'dark');
+          themeToggleBtn.textContent = '☀️';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('neo_wahha_theme', 'light');
+          themeToggleBtn.textContent = '🌙';
+        }
+      });
+    }
 
     if (brandHome) {
       brandHome.addEventListener('click', () => App.navigate('home'));

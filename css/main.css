@@ -100,6 +100,100 @@
   --z-toast: 300;
 }
 
+/* --- Light Theme (Sky Blue & White) --- */
+[data-theme="light"] {
+  /* Sky Blue and White Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f8ff; /* Alice Blue / Lightest Sky Blue */
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-glass: rgba(135, 206, 235, 0.2);
+
+  /* All Accents mapped to Darker Sky Blue variations for readability on white */
+  --accent-purple: #007bb5; /* Dark Sky Blue */
+  --accent-blue: #005c99;   /* Deep Sky Navy */
+  --accent-cyan: #008eb3;   /* True Sky Cerulean */ 
+  --accent-green: #007a99;
+  --accent-orange: #006bb3;
+  --accent-pink: #0080bc;
+  --accent-yellow: #006699;
+  --accent-red: #005580;
+
+  --neon-purple: #006bb3; 
+  --neon-blue: #0077cc;
+  --neon-cyan: #0088cc;
+  --neon-green: #005c99;
+
+  /* Text colors - dark sky blue/slate for readability */
+  --text-primary: #001a33; /* Nearly black navy for pristine readability */
+  --text-secondary: #003d73; /* Dark Steel Blue */
+  --text-muted: #597d99;
+
+  /* Borders and Gradients mapped to Sky Blue / White */
+  --border-color: rgba(0, 123, 181, 0.3);
+  --border-glow: rgba(0, 123, 181, 0.5);
+
+  --gradient-purple: linear-gradient(135deg, #007bb5, #005c99);
+  --gradient-blue: linear-gradient(135deg, #0077cc, #008eb3);
+  --gradient-sunset: linear-gradient(135deg, #0088cc, #006bb3);
+  --gradient-green: linear-gradient(135deg, #006bb3, #005c99);
+  
+  --gradient-dark: radial-gradient(circle at 50% 0%, #ffffff 0%, #f0f8ff 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.8));
+  --gradient-3d: linear-gradient(to bottom, rgba(135, 206, 235, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+
+  --shadow-sm: 0 4px 6px rgba(135,206,235,0.1);
+  --shadow-md: 0 10px 20px rgba(135,206,235,0.2);
+  --shadow-lg: 0 20px 40px rgba(135,206,235,0.3);
+  --shadow-3d-btn: 0px 8px 0px rgba(135,206,235,0.6), 0 15px 20px rgba(0,0,0,0.1);
+  --shadow-3d-btn-active: 0px 2px 0px rgba(135,206,235,0.6), 0 5px 10px rgba(0,0,0,0.1);
+  --shadow-glow-purple: 0 0 25px rgba(135, 206, 235, 0.4), inset 0 0 10px rgba(135, 206, 235, 0.2);
+  --shadow-glow-blue: 0 0 25px rgba(0, 191, 255, 0.4), inset 0 0 10px rgba(0, 191, 255, 0.2);
+  --shadow-glow-cyan: 0 0 25px rgba(135, 206, 250, 0.4), inset 0 0 10px rgba(135, 206, 250, 0.2);
+  
+  --text-shadow-3d: 0 1px 0 #e6f2ff, 0 2px 0 #b0d4ff, 0 3px 0 #87cefa, 0 4px 0 #00bfff, 0 8px 10px rgba(135,206,235,0.3);
+}
+
+/* --- Light Mode Layout Overrides --- */
+[data-theme="light"] .login-card,
+[data-theme="light"] .importance-card,
+[data-theme="light"] .lesson-content,
+[data-theme="light"] .lesson-section,
+[data-theme="light"] .quiz-question,
+[data-theme="light"] .chat-container {
+  background: var(--bg-card) !important;
+}
+
+[data-theme="light"] .importance-points li,
+[data-theme="light"] .lesson-item,
+[data-theme="light"] .quiz-option,
+[data-theme="light"] .chat-input-area,
+[data-theme="light"] .code-preview-header,
+[data-theme="light"] .lesson-nav,
+[data-theme="light"] .course-card {
+  background: var(--bg-glass) !important;
+}
+
+[data-theme="light"] .input-field,
+[data-theme="light"] .progress-bar {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .empty-state {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="light"] .login-title,
+[data-theme="light"] .section-header h2,
+[data-theme="light"] .quiz-score .score-number {
+  text-shadow: 0 4px 10px rgba(135,206,235,0.4) !important;
+}
+
+[data-theme="light"] .quiz-question h3,
+[data-theme="light"] .course-info h3 {
+  text-shadow: none !important;
+}
+
 /* --- Global Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -151,6 +245,19 @@ body::after {
   background-position: 0 0, 30px 30px;
   opacity: 0.05;
   animation: starFloat 100s linear infinite;
+}
+
+[data-theme="light"] body::before {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(0, 119, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 224, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 119, 255, 0.04) 0%, transparent 60%);
+}
+
+[data-theme="light"] body::after {
+  background-image: 
+    radial-gradient(#0077ff 1px, transparent 1px),
+    radial-gradient(#0077ff 1px, transparent 1px);
 }
 
 a {
@@ -205,6 +312,34 @@ pre {
   box-shadow: inset 0 5px 15px rgba(0,0,0,0.5), 0 10px 20px rgba(0,0,0,0.3);
   position: relative;
   transform-style: preserve-3d;
+  margin: 15px 0;
+  direction: ltr; /* Ensure code is always LTR */
+}
+
+.content-code-block {
+  margin: var(--space-4) 0;
+  position: relative;
+}
+
+.content-code-block::before {
+  content: 'Code';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: var(--gradient-purple);
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.quiz-question pre {
+  background: rgba(10, 14, 39, 0.8);
+  border-color: var(--neon-purple);
+  font-size: 0.95rem;
 }
 
 /* Scrollbar */

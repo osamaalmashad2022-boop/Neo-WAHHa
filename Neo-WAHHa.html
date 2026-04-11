@@ -31,8 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- CodeMirror 6 via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@codemirror/lang-html@6.4.9/dist/index.cjs" defer></script>
+
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
@@ -72,6 +71,7 @@
       </a>
     </div>
     <div class="navbar-user">
+      <button id="theme-toggle-btn" class="btn-logout" title="تغيير المظهر" style="margin-left: var(--space-2); font-size: 1.2rem;">☀️</button>
       <span id="navbar-username" class="navbar-username"></span>
       <button id="logout-btn" class="btn-logout" title="تسجيل الخروج">🚪</button>
       <div class="navbar-org-logos" style="display: flex; gap: var(--space-2); align-items: center; margin-right: var(--space-4);">
@@ -97,6 +97,7 @@
 
   <!-- Scripts -->
   <script src="js/data/users.js"></script>
+  <script src="js/data/css-js-courses.js"></script>
   <script src="js/data/html-course.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/components/navbar.js"></script>

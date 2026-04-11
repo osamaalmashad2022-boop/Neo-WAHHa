@@ -4,6 +4,12 @@ const App = {
   currentParams: null,
 
   init() {
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('neo_wahha_theme');
+    if (savedTheme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
     // Check authentication
     const isLoggedIn = Auth.init();
     

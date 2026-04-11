@@ -16,7 +16,7 @@ const Quiz = {
     questions.forEach((q, qi) => {
       html += `
         <div class="quiz-question" id="quiz-q-${qi}">
-          <h3>❓ ${Utils.escapeHtml(q.question)}</h3>
+          <h3>❓ ${Utils.renderContent(q.question.replace(/^#+\s*/, '')).replace(/<\/?p>/g, '')}</h3>
           <div class="quiz-options">
       `;
       q.options.forEach((opt, oi) => {
@@ -74,12 +74,12 @@ const Quiz = {
           opt.classList.add('correct');
           feedbackEl.style.background = 'rgba(16,185,129,0.1)';
           feedbackEl.style.color = 'var(--neon-green)';
-          feedbackEl.textContent = '✅ ' + (questions[qi].options[oi].feedback || 'إجابة صحيحة!');
+          feedbackEl.innerHTML = '✅ ' + Utils.renderContent(questions[qi].options[oi].feedback || 'إجابة صحيحة!').replace(/<\/?p>/g, '');
         } else {
           opt.classList.add('incorrect');
           feedbackEl.style.background = 'rgba(239,68,68,0.1)';
           feedbackEl.style.color = 'var(--accent-red)';
-          feedbackEl.textContent = '❌ ' + (questions[qi].options[oi].feedback || 'إجابة خاطئة');
+          feedbackEl.innerHTML = '❌ ' + Utils.renderContent(questions[qi].options[oi].feedback || 'إجابة خاطئة').replace(/<\/?p>/g, '');
         }
         feedbackEl.style.display = 'block';
 

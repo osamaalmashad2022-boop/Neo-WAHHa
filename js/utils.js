@@ -60,12 +60,20 @@ const Utils = {
   // Render markdown-like text to HTML
   renderContent(text) {
     if (!text) return '';
+    
+    // Escape raw HTML tags so they display properly in the lessons
+    text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    
+    // Support for code blocks (triple backticks) - remove language tags if present
+    text = text.replace(/```(?:html|css|javascript|js)?\n?([\s\S]*?)```/g, '<div class="content-code-block"><pre><code dir="ltr">$1</code></pre></div>');
+
     return text
       .replace(/^### (.+)$/gm, '<h3>$1</h3>')
       .replace(/^## (.+)$/gm, '<h2>$1</h2>')
       .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; margin: 15px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block;">')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/`(.+?)`/g, '<code>$1</code>')
+      .replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>')
       .replace(/^- (.+)$/gm, '<li>$1</li>')
       .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
       .replace(/\n\n/g, '</p><p>')
