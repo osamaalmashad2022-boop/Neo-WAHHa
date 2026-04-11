@@ -1054,26 +1054,27 @@
   .profile-header, 
   .team-card, 
   .logo-modal-content {
-    padding: var(--space-5);
+    padding: var(--space-3) var(--space-4);
   }
 
   .home-hero h1 {
-    font-size: var(--fs-4xl);
+    font-size: var(--fs-3xl);
   }
 
   .home-hero .hero-description {
-    font-size: var(--fs-lg);
+    font-size: var(--fs-base);
   }
 
   .hero-logo-frame {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: var(--space-4);
   }
 
   .course-card {
     flex-direction: column;
     text-align: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   .course-meta {
@@ -1092,7 +1093,19 @@
   }
 
   .lesson-item {
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-3);
+  }
+
+  .lesson-content h1 {
+    font-size: var(--fs-2xl);
+  }
+
+  .lesson-content h2 {
+    font-size: var(--fs-xl);
+  }
+
+  .lesson-content h3 {
+    font-size: var(--fs-lg);
   }
 
   .code-editor-actions {
@@ -1101,10 +1114,11 @@
 
   .chat-input-area {
     flex-direction: column;
+    padding: var(--space-3);
   }
 
   .quiz-score .score-number {
-    font-size: var(--fs-4xl);
+    font-size: var(--fs-3xl);
   }
 
   .section-cards {
@@ -1116,10 +1130,10 @@
   }
 
   .login-logo {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .login-title {
-    font-size: var(--fs-4xl);
+    font-size: var(--fs-3xl);
   }
 }
