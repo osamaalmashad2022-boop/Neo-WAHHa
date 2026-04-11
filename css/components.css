@@ -634,3 +634,24 @@ textarea.input-field {
   margin-bottom: var(--space-4);
   filter: drop-shadow(0 10px 30px rgba(0, 224, 255, 0.6));
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-4);
+  }
+
+  .toast {
+    width: 90%;
+    padding: var(--space-4);
+    font-size: var(--fs-base);
+  }
+
+  .btn-lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--fs-base);
+  }
+  
+  .navbar-org-logos {
+    display: none !important;
+  }
+}

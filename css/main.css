@@ -477,8 +477,13 @@ pre {
     padding-top: calc(85px + var(--space-4));
   }
   :root {
-    --fs-5xl: 2.8rem;
+    --fs-6xl: 3.2rem;
+    --fs-5xl: 2.6rem;
     --fs-4xl: 2.2rem;
     --fs-3xl: 1.8rem;
+    --fs-2xl: 1.5rem;
+    --fs-xl: 1.2rem;
+    --fs-lg: 1.05rem;
+    --fs-base: 0.95rem;
   }
 }

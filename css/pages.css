@@ -1043,3 +1043,83 @@
   box-shadow: 0 5px 15px rgba(179, 56, 255, 0.3);
 }
 
+/* --- Mobile Responsive Layouts --- */
+@media (max-width: 768px) {
+  .login-card, 
+  .importance-card, 
+  .section-card, 
+  .lesson-content, 
+  .lesson-section, 
+  .quiz-question, 
+  .profile-header, 
+  .team-card, 
+  .logo-modal-content {
+    padding: var(--space-5);
+  }
+
+  .home-hero h1 {
+    font-size: var(--fs-4xl);
+  }
+
+  .home-hero .hero-description {
+    font-size: var(--fs-lg);
+  }
+
+  .hero-logo-frame {
+    width: 140px;
+    height: 140px;
+  }
+
+  .course-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .course-meta {
+    justify-content: center;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+  }
+
+  .lesson-nav {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .lesson-item {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .code-editor-actions {
+    flex-direction: column;
+  }
+
+  .chat-input-area {
+    flex-direction: column;
+  }
+
+  .quiz-score .score-number {
+    font-size: var(--fs-4xl);
+  }
+
+  .section-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .importance-points {
+    grid-template-columns: 1fr;
+  }
+
+  .login-logo {
+    font-size: 4rem;
+  }
+
+  .login-title {
+    font-size: var(--fs-4xl);
+  }
+}
