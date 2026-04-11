@@ -41,7 +41,7 @@ const ActivitiesPage = {
     app.innerHTML = `
       <div class="page page-with-nav">
         <div class="section-header">
-          <h2><span class="text-gradient">🎮 الأنشطة التفاعلية</span></h2>
+          <h2>🎮 <span class="text-gradient">الأنشطة التفاعلية</span></h2>
           <p>طبّق ما تعلمته من خلال أنشطة عملية</p>
         </div>
 

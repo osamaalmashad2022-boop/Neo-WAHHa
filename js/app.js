@@ -25,6 +25,34 @@ const App = {
 
     // Initialize navbar
     Navbar.init();
+
+    // Global logo zoom logic
+    this.initLogoZoom();
+  },
+
+  initLogoZoom() {
+    const modal = Utils.$('logo-modal');
+    const closeBtn = Utils.$('logo-modal-close');
+
+    if (!modal || !closeBtn) return;
+
+    // Handle clicks on any logo with zoomable class or specific selectors
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('navbar-logo-img') || e.target.classList.contains('login-logo-img') || e.target.classList.contains('hero-logo-img')) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+      }
+    });
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = ''; // Restore scroll
+    };
+
+    closeBtn.onclick = closeModal;
+    modal.onclick = (e) => {
+      if (e.target === modal) closeModal();
+    };
   },
 
   navigate(page, params = {}, pushState = true) {

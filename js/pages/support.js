@@ -8,7 +8,7 @@ const SupportPage = {
     app.innerHTML = `
       <div class="page page-with-nav">
         <div class="section-header">
-          <h2><span class="text-gradient">📞 التواصل والدعم</span></h2>
+          <h2>📞 <span class="text-gradient">التواصل والدعم</span></h2>
           <p>فريق العمل القائم على منصة Neo-WAHHa</p>
         </div>
 

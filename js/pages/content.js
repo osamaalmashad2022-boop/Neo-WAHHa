@@ -16,7 +16,7 @@ const ContentPage = {
     app.innerHTML = `
       <div class="page page-with-nav">
         <div class="section-header">
-          <h2><span class="text-gradient">📚 المحتوى التعليمي</span></h2>
+          <h2>📚 <span class="text-gradient">المحتوى التعليمي</span></h2>
           <p>اختر الكورس الذي تريد تعلمه</p>
         </div>
 

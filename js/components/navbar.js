@@ -6,6 +6,11 @@ const Navbar = {
     const links = Utils.$('navbar-links');
     const logoutBtn = Utils.$('logout-btn');
     const usernameEl = Utils.$('navbar-username');
+    const brandHome = Utils.$('navbar-brand-home');
+
+    if (brandHome) {
+      brandHome.addEventListener('click', () => App.navigate('home'));
+    }
 
     if (Auth.isLoggedIn()) {
       navbar.classList.remove('hidden');

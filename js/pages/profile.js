@@ -42,7 +42,7 @@ const ProfilePage = {
             <span class="stat-label">نسبة التقدم</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" style="color: var(--accent-orange);">${examScore ? examScore.pct + '%' : '—'}</span>
+            <span class="stat-value" style="color: var(--accent-orange);">${examScore ? Math.round(examScore.pct) + '%' : '—'}</span>
             <span class="stat-label">درجة الاختبار النهائي</span>
           </div>
         </div>
@@ -76,13 +76,17 @@ const ProfilePage = {
         ${lessonScores.length > 0 ? `
           <h3 style="margin-bottom: var(--space-4); color: var(--neon-cyan);">📋 درجات الاختبارات</h3>
           <div class="grid-auto">
-            ${lessonScores.map(([id, s]) => `
+            ${lessonScores.map(([id, s]) => {
+              const roundedPct = Math.round(s.pct);
+              return `
               <div class="card" style="text-align: center;">
-                <span style="display:block;font-size:2rem;margin-bottom:var(--space-2);">${s.pct >= 80 ? '⭐' : s.pct >= 60 ? '👍' : '📝'}</span>
-                <div style="font-size:var(--fs-2xl);font-weight:900;color:${s.pct>=80?'var(--neon-green)':s.pct>=60?'var(--accent-orange)':'var(--accent-red)'};">${s.score}/${s.total}</div>
-                <small style="color:var(--text-muted);">${Utils.formatDate(s.date)}</small>
+                <span style="display:block;font-size:2rem;margin-bottom:var(--space-2);">${roundedPct >= 80 ? '⭐' : roundedPct >= 60 ? '👍' : '📝'}</span>
+                <div style="font-size:var(--fs-2xl);font-weight:900;color:${roundedPct>=80?'var(--neon-green)':roundedPct>=60?'var(--accent-orange)':'var(--accent-red)'};">${s.score}/${s.total}</div>
+                <div style="font-size: var(--fs-lg); margin-top: var(--space-2); color: var(--text-secondary);">${roundedPct}%</div>
+                <small style="color:var(--text-muted); display: block; margin-top: var(--space-2);">${Utils.formatDate(s.date)}</small>
               </div>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         ` : ''}
       </div>

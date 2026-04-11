@@ -8,7 +8,9 @@ const HomePage = {
       <div class="page page-with-nav">
         <!-- Hero Section -->
         <div class="home-hero">
-          <span class="home-hero-emoji">🌴</span>
+          <div class="logo-frame hero-logo-frame">
+            <img src="assets/images/logo.png" alt="Neo-WAHHa Logo" class="hero-logo-img">
+          </div>
           <h1><span class="text-gradient">Neo-WAHHa</span><br>واحة المستقبل</h1>
           <p class="hero-description">
             مرحباً بك يا <strong style="color: var(--neon-cyan);">${Auth.getUser().displayName}</strong>! 
@@ -36,7 +38,7 @@ const HomePage = {
 
         <!-- Section Cards -->
         <div class="section-header">
-          <h2><span class="text-gradient">🧭 استكشف المنصة</span></h2>
+          <h2>🧭 <span class="text-gradient">استكشف المنصة</span></h2>
           <p>اختر القسم الذي تريد البدء منه</p>
         </div>
 

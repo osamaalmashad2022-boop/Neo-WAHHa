@@ -40,7 +40,8 @@ const Quiz = {
       <div class="quiz-score" id="quiz-score" style="display:none;">
         <span style="font-size:3rem; display:block; margin-bottom: var(--space-4);">🏆</span>
         <div class="score-number text-gradient" id="quiz-score-text"></div>
-        <p style="color: var(--text-secondary); margin-top: var(--space-3);" id="quiz-score-msg"></p>
+        <p style="color: var(--text-secondary); margin-top: var(--space-3); margin-bottom: var(--space-4);" id="quiz-score-msg"></p>
+        <button id="quiz-retake-btn" class="btn btn-primary" style="display:none; margin: 0 auto;">إعادة الاختبار 🔄</button>
       </div>
     </div>`;
 
@@ -60,6 +61,7 @@ const Quiz = {
         questionEl.dataset.answered = 'true';
 
         answered++;
+        if (options.onAnswer) options.onAnswer(answered, total);
 
         // Highlight correct/incorrect
         Utils.qsa('.quiz-option', questionEl).forEach(o => {
@@ -88,7 +90,7 @@ const Quiz = {
           const scoreMsg = Utils.$('quiz-score-msg');
           scoreEl.style.display = 'block';
           scoreText.textContent = `${score} / ${total}`;
-          const pct = (score / total) * 100;
+          const pct = Math.round((score / total) * 100);
           scoreMsg.textContent = pct >= 80 ? 'ممتاز! أنت نجم! ⭐' : pct >= 60 ? 'جيد! استمر في التعلم 💪' : 'حاول مرة أخرى 🔄';
           
           // Save score
@@ -96,6 +98,12 @@ const Quiz = {
             const scores = Utils.store.get('examScores', {});
             scores[options.examId] = { score, total, pct, date: Date.now() };
             Utils.store.set('examScores', scores);
+          }
+
+          if (options.onRetake) {
+            const retakeBtn = Utils.$('quiz-retake-btn');
+            retakeBtn.style.display = 'inline-block';
+            retakeBtn.onclick = () => options.onRetake();
           }
 
           if (options.onComplete) options.onComplete(score, total);

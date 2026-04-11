@@ -26,17 +26,17 @@ const ExamPage = {
     app.innerHTML = `
       <div class="page page-with-nav">
         <div class="section-header">
-          <h2><span class="text-gradient">📝 الاختبار النهائي الشامل</span></h2>
+          <h2>📝 <span class="text-gradient">الاختبار النهائي الشامل</span></h2>
           <p>اختبار على جميع الموضوعات — ${allQuestions.length} سؤال</p>
           ${prevScore ? `
             <div style="margin-top: var(--space-4);">
-              <span class="badge badge-green">آخر نتيجة: ${prevScore.score}/${prevScore.total} (${prevScore.pct}%)</span>
+              <span class="badge badge-green">آخر نتيجة: ${prevScore.score}/${prevScore.total} (${Math.round(prevScore.pct)}%)</span>
             </div>
           ` : ''}
         </div>
 
         <div class="exam-progress">
-          <div class="progress-text">0 / ${allQuestions.length} سؤال</div>
+          <div class="progress-text" id="exam-progress-text">0 / ${allQuestions.length} سؤال</div>
           <div class="progress-bar">
             <div class="progress-fill" style="width: 0%;" id="exam-progress-fill"></div>
           </div>
@@ -50,6 +50,15 @@ const ExamPage = {
     Quiz.render(examContainer, allQuestions, {
       title: '🎓 أجب على جميع الأسئلة',
       examId: 'final-exam',
+      onAnswer: (answered, total) => {
+        const fill = Utils.$('exam-progress-fill');
+        const text = Utils.$('exam-progress-text');
+        if (fill) fill.style.width = Math.round((answered / total) * 100) + '%';
+        if (text) text.textContent = `${answered} / ${total} سؤال`;
+      },
+      onRetake: () => {
+        ExamPage.render();
+      },
       onComplete: (score, total) => {
         Utils.showToast(`🏆 اكتملت! نتيجتك: ${score}/${total}`);
       }

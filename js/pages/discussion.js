@@ -8,7 +8,7 @@ const DiscussionPage = {
     app.innerHTML = `
       <div class="page page-with-nav">
         <div class="section-header">
-          <h2><span class="text-gradient">💬 لوحة النقاش</span></h2>
+          <h2>💬 <span class="text-gradient">لوحة النقاش</span></h2>
           <p>تواصل مع زملائك وناقش ما تتعلمه</p>
         </div>
         <div id="chat-area"></div>

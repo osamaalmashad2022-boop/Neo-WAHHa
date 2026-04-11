@@ -7,7 +7,9 @@ const LoginPage = {
       <div class="login-page">
         <div class="login-container">
           <div class="login-header">
-            <span class="login-logo">🌴</span>
+            <div class="logo-frame" style="width: 140px; height: 140px; margin: 0 auto var(--space-4); border-radius: var(--radius-lg);">
+              <img src="assets/images/logo.png" alt="Neo-WAHHa" class="login-logo-img" style="height: 85%; margin-bottom: 0;">
+            </div>
             <h1 class="login-title"><span class="text-gradient">Neo-WAHHa</span></h1>
             <p class="login-subtitle">واحة المستقبل — تعليم البرمجة للأطفال</p>
           </div>

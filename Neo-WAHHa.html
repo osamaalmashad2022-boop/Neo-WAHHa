@@ -6,6 +6,9 @@
   <meta name="description" content="Neo-WAHHa — واحة المستقبل | منصة تعليمية تفاعلية لتعليم البرمجة للأطفال">
   <title>Neo-WAHHa — واحة المستقبل</title>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +25,10 @@
 <body>
   <!-- Navbar — hidden on login -->
   <nav id="main-navbar" class="navbar hidden">
-    <div class="navbar-brand">
-      <span class="navbar-logo">🌴</span>
+    <div class="navbar-brand" id="navbar-brand-home" style="cursor: pointer;">
+      <div class="logo-frame">
+        <img src="assets/images/logo.png" alt="Neo-WAHHa" class="navbar-logo-img">
+      </div>
       <span class="navbar-title">Neo-WAHHa</span>
     </div>
     <div class="navbar-links" id="navbar-links">
@@ -63,6 +68,15 @@
 
   <!-- Main Content Area -->
   <main id="app" class="app-container"></main>
+
+  <!-- Logo Modal -->
+  <div id="logo-modal" class="logo-modal hidden">
+    <div class="logo-modal-content">
+      <button class="logo-modal-close" id="logo-modal-close">×</button>
+      <img src="assets/images/logo.png" alt="Neo-WAHHa Logo" class="logo-modal-img">
+      <h2 class="text-gradient" style="margin-top: var(--space-4);">Neo-WAHHa</h2>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/data/users.js"></script>
