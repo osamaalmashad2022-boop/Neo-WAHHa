@@ -16,9 +16,6 @@ const HomePage = {
             مرحباً بك يا <strong style="color: var(--neon-cyan);">${Auth.getUser().displayName}</strong>! 
             هنا تبدأ رحلتك في عالم البرمجة. تعلّم، جرّب، وابنِ مواقعك الخاصة بطريقة ممتعة وتفاعلية!
           </p>
-          <button class="btn btn-primary btn-lg" onclick="App.navigate('content')">
-            ابدأ التعلم الآن 🚀
-          </button>
         </div>
 
         <!-- Importance Section -->

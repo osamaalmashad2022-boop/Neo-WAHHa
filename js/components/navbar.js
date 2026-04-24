@@ -48,8 +48,8 @@ const Navbar = {
       App.navigate('login');
     });
 
-    // Nav link clicks
-    Utils.qsa('.nav-link', navbar).forEach(link => {
+    // Nav link clicks (top-level links)
+    Utils.qsa('.nav-link:not(.nav-dropdown-toggle)', navbar).forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const page = link.dataset.page;
@@ -57,12 +57,58 @@ const Navbar = {
         links.classList.remove('open');
       });
     });
+
+    // Dropdown toggle
+    const dropdownToggle = Utils.$('dropdown-toggle-tools');
+    const dropdownContainer = Utils.$('nav-dropdown-tools');
+    if (dropdownToggle && dropdownContainer) {
+      dropdownToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownContainer.classList.toggle('open');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!dropdownContainer.contains(e.target)) {
+          dropdownContainer.classList.remove('open');
+        }
+      });
+    }
+
+    // Dropdown item clicks
+    Utils.qsa('.nav-dropdown-item', navbar).forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = item.dataset.page;
+        App.navigate(page);
+        links.classList.remove('open');
+        if (dropdownContainer) dropdownContainer.classList.remove('open');
+      });
+    });
   },
 
   setActive(page) {
-    Utils.qsa('.nav-link').forEach(link => {
+    // Update top-level nav links
+    Utils.qsa('.nav-link:not(.nav-dropdown-toggle)').forEach(link => {
       link.classList.toggle('active', link.dataset.page === page);
     });
+    // Update dropdown items
+    Utils.qsa('.nav-dropdown-item').forEach(item => {
+      item.classList.toggle('active', item.dataset.page === page);
+    });
+    // If any dropdown item is active, highlight the toggle too
+    const dropdownToggle = Utils.$('dropdown-toggle-tools');
+    if (dropdownToggle) {
+      const anyDropdownActive = ['profile', 'discussion', 'support'].includes(page);
+      dropdownToggle.classList.toggle('active', anyDropdownActive);
+    }
+
+    // Hide/show home link based on current page
+    const homeLink = Utils.$('nav-home-link');
+    if (homeLink) {
+      homeLink.style.display = (page === 'home') ? 'none' : '';
+    }
   },
 
   show() {

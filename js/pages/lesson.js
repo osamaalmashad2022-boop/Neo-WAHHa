@@ -15,9 +15,20 @@ const LessonPage = {
     const prevLesson = lessonIndex > 0 ? lessonIndex - 1 : null;
     const nextLesson = lessonIndex < course.lessons.length - 1 ? lessonIndex + 1 : null;
 
+    const progressPercent = Math.round(((lessonIndex + 1) / course.lessons.length) * 100);
+
     app.innerHTML = `
       <div class="page page-with-nav lesson-page">
-        <button class="back-btn" onclick="App.navigate('content', {courseId: '${courseId}'})">→ العودة لقائمة الدروس</button>
+        <!-- Progress Bar -->
+        <div class="lesson-progress-container">
+          <div class="lesson-progress-info">
+            <span>📖 ${course.title}</span>
+            <span class="current-lesson">الدرس ${lessonIndex + 1} من ${course.lessons.length}</span>
+          </div>
+          <div class="lesson-progress-bar">
+            <div class="lesson-progress-fill" style="width: ${progressPercent}%"></div>
+          </div>
+        </div>
         
         <div class="lesson-content">
           <h1>${lesson.title}</h1>
@@ -53,10 +64,9 @@ const LessonPage = {
             ? `<button class="btn btn-secondary" onclick="App.navigate('lesson', {courseId:'${courseId}', lessonIndex:${prevLesson}})">→ الدرس السابق</button>`
             : '<div></div>'
           }
-          <button class="btn btn-success" id="complete-lesson-btn">✅ إكمال الدرس</button>
           ${nextLesson !== null 
-            ? `<button class="btn btn-primary" onclick="App.navigate('lesson', {courseId:'${courseId}', lessonIndex:${nextLesson}})">الدرس التالي ←</button>`
-            : '<div></div>'
+            ? `<button class="btn btn-primary" id="next-lesson-btn" data-course-id="${courseId}" data-next-index="${nextLesson}">الدرس التالي ←</button>`
+            : `<button class="btn btn-primary" id="finish-course-btn">✅ إنهاء الكورس</button>`
           }
         </div>
       </div>
@@ -165,18 +175,35 @@ const LessonPage = {
       LessonPage.renderActivities(activitiesContainer, lesson.activities);
     }
 
-    // Complete lesson button
-    Utils.$('complete-lesson-btn').addEventListener('click', () => {
-      const completed = Utils.store.get('completedLessons', []);
-      if (!completed.includes(lesson.id)) {
-        completed.push(lesson.id);
-        Utils.store.set('completedLessons', completed);
-      }
-      Utils.showToast('🎉 أحسنت! تم إكمال الدرس');
-      if (nextLesson !== null) {
-        setTimeout(() => App.navigate('lesson', { courseId, lessonIndex: nextLesson }), 1000);
-      }
-    });
+    // Next lesson button — marks current lesson as complete, then navigates
+    const nextBtn = Utils.$('next-lesson-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const completed = Utils.store.get('completedLessons', []);
+        if (!completed.includes(lesson.id)) {
+          completed.push(lesson.id);
+          Utils.store.set('completedLessons', completed);
+        }
+        Utils.showToast('🎉 أحسنت! تم إكمال الدرس');
+        const cId = nextBtn.dataset.courseId;
+        const nIdx = parseInt(nextBtn.dataset.nextIndex);
+        setTimeout(() => App.navigate('lesson', { courseId: cId, lessonIndex: nIdx }), 600);
+      });
+    }
+
+    // Finish course button (last lesson)
+    const finishBtn = Utils.$('finish-course-btn');
+    if (finishBtn) {
+      finishBtn.addEventListener('click', () => {
+        const completed = Utils.store.get('completedLessons', []);
+        if (!completed.includes(lesson.id)) {
+          completed.push(lesson.id);
+          Utils.store.set('completedLessons', completed);
+        }
+        Utils.showToast('🏆 مبروك! أكملت جميع الدروس');
+        setTimeout(() => App.navigate('content', { courseId }), 1000);
+      });
+    }
   },
 
   renderActivities(container, activities) {

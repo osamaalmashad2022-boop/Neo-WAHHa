@@ -5,20 +5,54 @@
 
 /* --- Login Page --- */
 .login-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100vh;
-  padding: var(--space-4);
   position: relative;
-
 }
 
-.login-container {
-  width: 100%;
-  max-width: 440px;
-  animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.login-brand-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background: linear-gradient(135deg, rgba(0, 140, 210, 0.15), rgba(0, 224, 255, 0.08));
+  border-left: 2px solid rgba(0, 224, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
 
+.login-brand-side::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 140, 210, 0.2), transparent 70%);
+  border-radius: 50%;
+  animation: pulse 6s infinite alternate;
+}
+
+.login-brand-side::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(179, 56, 255, 0.15), transparent 70%);
+  border-radius: 50%;
+  animation: pulse 5s infinite alternate-reverse;
+}
+
+.login-form-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
 }
 
 .login-header {
@@ -49,6 +83,32 @@
 .login-subtitle {
   color: var(--text-secondary);
   font-size: var(--fs-xl);
+}
+
+.login-org-logos {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.login-org-logos img {
+  height: 65px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 224, 255, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.login-org-logos img:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 224, 255, 0.4);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .login-card {
@@ -448,7 +508,7 @@
 
 /* --- Lesson Page --- */
 .lesson-page {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 .lesson-nav {
@@ -460,6 +520,79 @@
   padding: var(--space-4);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Lighter button colors for lesson navigation */
+.lesson-nav .btn-secondary {
+  background: rgba(100, 200, 255, 0.15);
+  color: #7dd3fc;
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 0 rgba(100, 200, 255, 0.35), 0 10px 15px rgba(0,0,0,0.3);
+}
+
+.lesson-nav .btn-secondary:hover {
+  background: rgba(100, 200, 255, 0.25);
+  filter: brightness(1.15);
+}
+
+.lesson-nav .btn-primary {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #fff;
+  box-shadow: 0px 8px 0px rgba(56, 189, 248, 0.5), 0 15px 20px rgba(0,0,0,0.3);
+}
+
+.lesson-nav .btn-primary:hover {
+  filter: brightness(1.15);
+}
+
+/* Lesson Progress Bar */
+.lesson-progress-container {
+  margin-bottom: var(--space-6);
+  background: rgba(0,0,0,0.3);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.lesson-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  font-weight: 700;
+}
+
+.lesson-progress-info .current-lesson {
+  color: var(--neon-cyan);
+  font-weight: 800;
+}
+
+.lesson-progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(0,0,0,0.5);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lesson-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9, #7dd3fc);
+  transition: width var(--transition-slow);
+  position: relative;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+.lesson-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s linear infinite;
 }
 
 .lesson-content {
@@ -1135,5 +1268,25 @@
 
   .login-title {
     font-size: var(--fs-3xl);
+  }
+
+  /* Login split layout stacks vertically on mobile */
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-brand-side {
+    border-left: none;
+    border-bottom: 2px solid rgba(0, 224, 255, 0.2);
+    padding: var(--space-8) var(--space-4);
+    min-height: auto;
+  }
+
+  .login-form-side {
+    padding: var(--space-4);
+  }
+
+  .login-org-logos img {
+    height: 50px;
   }
 }
